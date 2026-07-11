@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>User Explorer</title>
+
+        <link rel="stylesheet" href="./style.css">
+    </head>
+    <body>
+        <!-- Sidebar with navigation pannel -->
+        <aside class="nav-sidebar">
+            <!-- User explorer nav sidebar header -->
+            <header class="nav-sidebar-header">
+                <i data-lucide="users" class="nav-icon"></i>
+                <h2>User Explorer</h2>
+            </header>
+
+            <!-- User explorer navigation panel -->
+            <nav class="nav-menu">
+                <a href="" class="menu-item item-dashboard">
+                    <i data-lucide="house" class="menu-item-icon"></i>
+                    <span class="item-text">Dashboard</span>
+                    <span class="item-notif-count" hidden></span>
+                </a>
+
+                <a href="" class="menu-item item-users item-selected">
+                    <i data-lucide="user" class="menu-item-icon"></i>
+                    <span class="item-text">Users</span>
+                    <span class="item-notif-count" hidden></span>
+                </a>
+                
+                <a href="" class="menu-item item-segments">
+                    <i data-lucide="chart-pie" class="menu-item-icon"></i>
+                    <span class="item-text">Segments</span>
+                    <span class="item-notif-count" hidden></span>
+                </a>
+
+                <a href="" class="menu-item item-reports">
+                    <i data-lucide="chart-no-axes-column" class="menu-item-icon"></i>
+                    <span class="item-text">Reports</span>
+                    <span class="item-notif-count" hidden></span>
+                </a>
+
+                <a href="" class="menu-item item-messages">
+                    <i data-lucide="message-circle-more" class="menu-item-icon"></i>
+                    <span class="item-text">Messages</span>
+                    <span class="item-notif-count">12</span>
+                </a>
+
+                <a href="" class="menu-item item-audit-log">
+                    <i data-lucide="notepad-text" class="menu-item-icon"></i>
+                    <span class="item-text">Audit Log</span>
+                    <span class="item-notif-count" hidden></span>
+                </a>
+
+                <a href="" class="menu-item item-settings">
+                    <i data-lucide="settings" class="menu-item-icon"></i>
+                    <span class="item-text">Settings</span>
+                    <span class="item-notif-count" hidden></span>
+                </a>
+            </nav>
+
+            <!-- Upgrate to pro offer block -->
+            <section class="upgrade-section">
+                <i data-lucide="" class="upgrade-icon"></i>
+                <h3>Upgrade to Pro</h3>
+                <p>Unlock advanced filters, exports and more.</p>
+                <button type="button" class="upgrade-button">Upgrade Now</button>
+            </section>
+
+            <!-- Current user profile block -->
+            <section class="user-profile current-user-profile">
+                <img src="./img/user-default.jpg" alt="Your avatar">
+                <div class="user-profile-text current-user-text">
+                    <h3>Danil Dugin</h3>
+                    <p>Administrator</p>
+                </div>
+                <button class="current-user-button"><i data-lucide="chevron-down" class="current-user-button-icon"></i></button>
+            </section>
+        </aside>
+
+        <!-- Main block with users search form and info cards -->
+        <main>
+            <!-- Main block header -->
+            <header class="main-header">
+                <div class="main-header-text">
+                    <h1>User Explorer</h1>
+                    <p>Browse, search, and filter users to find the right people.</p>
+                </div>
+
+                <button class="add-user-button">
+                    <i data-lucide="user-plus" class="add-user-icon"></i>
+                    <span>Add New User</span>
+                </button>
+            </header>
+
+            <!-- Filtering status block -->
+            <div class="filtering-status-block">
+                <i data-lucide="check" class="filtering-success-icon"></i>
+                <i data-lucide="x" class="filtering-success-icon" hidden></i>
+
+                <div class="filtering-status-text">
+                    <h3>Filters applied</h3>
+                    <p>Showing 24 of 1,248 users</p>
+                </div>
+
+                <button type="button" class="filtering-status-close">
+                    <i data-lucide="x" class="filtering-success-icon"></i>
+                </button>
+            </div>
+
+            <!-- Filtering form -->
+            <form class="filtering-form">
+                <div class="filtering-params">
+                    <div class="filter-item">
+                        <label for="search-field" class="filter-label">Search users</label>
+                        <input type="search" id="search-field" name="searchWord" placeholder="Search by name, email, or role...">
+                    </div>
+
+                    <div class="filter-item">
+                        <label for="select-status" class="filter-label">Status</label>
+
+                        <select id="select-status" name="displayStatus">
+                            <option value="all">All statuses</option>
+                            <option value="active">Active</option>
+                            <option value="inactive">Inactive</option>
+                            <option value="pending">Pending</option>
+                            <option value="blocked">Blocked</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-item">
+                        <label for="select-sort" class="filter-label">Sort by</label>
+
+                        <select id="select-sort" name="sortParam">
+                            <option value="newest-asc">Newest First</option>
+                            <option value="newest-desc">Newest Last</option>
+                            <option value="name-asc">Name: A to Z</option>
+                            <option value="name-desc">Name: Z to A</option>
+                            <option value="role-asc">Role: A to Z</option>
+                            <option value="role-desc">Role: Z to A</option>
+                            <option value="status-asc">Status</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-item">
+                        <span class="filter-label">Active Users Only</span>
+                        <label class="active-only-switch">
+                            <input type="checkbox" id="active-only-checkbox" name="activeOnly">
+
+                            <span class="switch-track">
+                                <span class="switch-thumb"></span>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="filtering-manage">
+                    <div class="manage-buttons">
+                        <button type="button" class="apply-filters-btn">
+                            <i data-lucide="funnel" class="apply-filters-icon"></i>
+                            <span>Apply filters</span>
+                        </button>
+
+                        <button type="button" class="reset-filters-btn">
+                            <i data-lucide="refresh-ccw" class="reset-filters-icon"></i>
+                            <span>Reset</span>
+                        </button>
+                    </div>
+
+                    <div class="advanced-filters-block">
+                        <span>Advanced filters</span>
+                        <i data-lucide="settings-2" class="advanced-filters-icon"></i>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Cards section -->
+            <section class="cards-section">
+                <div class="cards-container">
+                    <article class="user-card">
+                        <div class="user-profile card-user-profile">
+                            <img src="./img/user-default.jpg" alt="Ethan Parker avatar">
+                            <div class="user-profile-text current-user-text">
+                                <h3>Ethan Parker</h3>
+                                <p>ethan.parker@example.com</p>
+                                <p>Product Designer</p>
+                            </div>
+                        </div>
+
+                        <div class="statuses-block">
+                            <span class="user-status status-active">Active</span>
+                            <span class="user-status status-verified">Verified</span>
+                        </div>
+
+                        <p class="user-info">
+                            Creates intuitive user experiences with a focus on accessibility.
+                        </p>
+
+                        <div class="cards-button-section">
+                            <button class="view-user-button">
+                                <i data-lucide="eye" class="view-user-icon"></i>
+                                <span>View</span>
+                            </button>
+
+                            <button class="message-user-button">
+                                <i data-lucide="message-square-more" class="message-user-icon"></i>
+                                <span>Message</span>
+                            </button>
+
+                            <div class="card-additional-block">
+                                <button class="more-user-card"><i data-lucide="ellipsis-vertical" class="more-user-card-icon"></i></button>
+                                <i data-lucide="star" class="premium-card-icon" hidden></i>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="user-card card-premium">
+                        <div class="user-profile card-user-profile">
+                            <img src="./img/user-default.jpg" alt="Ethan Parker avatar">
+                            <div class="user-profile-text current-user-text">
+                                <h3>Ethan Parker</h3>
+                                <p>ethan.parker@example.com</p>
+                                <p>Product Designer</p>
+                            </div>
+                        </div>
+
+                        <div class="statuses-block">
+                            <span class="user-status status-active">Active</span>
+                            <span class="user-status status-verified">Verified</span>
+                        </div>
+
+                        <p class="user-info">
+                            Creates intuitive user experiences with a focus on accessibility.
+                        </p>
+
+                        <div class="cards-button-section">
+                            <button class="view-user-button">
+                                <i data-lucide="eye" class="view-user-icon"></i>
+                                <span>View</span>
+                            </button>
+
+                            <button class="message-user-button">
+                                <i data-lucide="message-square-more" class="message-user-icon"></i>
+                                <span>Message</span>
+                            </button>
+
+                            <div class="card-additional-block">
+                                <button class="more-user-card"><i data-lucide="ellipsis-vertical" class="more-user-card-icon"></i></button>
+                                <i data-lucide="star" class="premium-card-icon" hidden></i>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="cards-status cards-loading" hidden>
+                    <h3>Loading users...</h3>
+                    <i data-lucide="loader-circle" class="status-icon cards-loading-icon"></i>
+                </div>
+
+                <div class="cards-status cards-error" hidden>
+                    <h3>Users loading error</h3>
+                    <i data-lucide="circle-x" class="status-icon cards-error-icon"></i>
+                
+                    <button type="button" class="refresh-cards-btn">
+                        <i data-lucide="refresh-cw" class="refresh-cards-icon"></i>
+                        Try again
+                    </button>
+                </div>
+
+                <div class="cards-status cards-empty" hidden>
+                    <h3>Users not found</h3>
+                    <i data-lucide="user-round-x" class="status-icon cards-empty-icon"></i>
+                
+                    <button type="button" class="refresh-cards-btn">
+                        <i data-lucide="refresh-cw" class="refresh-cards-icon"></i>
+                        Try again
+                    </button>
+                </div>
+            </section>
+
+            <!-- Display cards manager -->
+            <section class="display-cards-manager">
+                <p class="display-status">
+                    Showing 1-6 of 24 users
+                </p>
+
+                <div class="display-page-chooser">
+                    <button type="button" class="previous-page-button">
+                        <i data-lucide="chevron-left" class="previous-page-icon"></i>
+                    </button>
+
+                    <button type="button" class="previous-page-button">
+                        1
+                    </button>
+
+                    <p class="left-pages-space" hidden>
+                        ...
+                    </p>
+
+                    <button type="button" class="previous-page-button">
+                        2
+                    </button>
+
+                    <button type="button" class="previous-page-button">
+                        3
+                    </button>
+
+                    <button type="button" class="previous-page-button">
+                        4
+                    </button>
+
+                    <p class="right-pages-space" hidden>
+                        ...
+                    </p>
+
+                    <button type="button" class="previous-page-button">
+                        <i data-lucide="chevron-right" class="previous-page-icon"></i>
+                    </button>
+                </div>
+
+                <div class="current-page-cards-option">
+                    <label for="cards-per-page-select">Show</label>
+                    
+                    <select id="cards-per-page-select" name="cardsPerPageCount">
+                        <option value="6">6 per page</option>
+                        <option value="6">12 per page</option>
+                        <option value="6">18 per page</option>
+                        <option value="6">24 per page</option>
+                        <option value="6">30 per page</option>
+                    </select>
+                </div>
+            </section>
+        </main>
+
+        <!-- Sidebar with additional information -->
+        <aside class="additional-info-sidebar">
+            <!-- Overview section -->
+            <section class="overview-section">
+                <h2>Overview</h2>
+
+                <article class="overview-item total-users">
+                    <i data-lucide="users" class="overview-icon total-users-icon"></i>
+
+                    <div class="overview-info">
+                        <h4>Total Users</h4>
+
+                        <p class="overview-stats">
+                            <span class="stats-number">1,248</span>
+                            <span class="stats-procent stats-grow">
+                                <i data-lucide="move-up-right" class="status-grow-icon"></i>
+                                +12,5%
+                            </span>
+                        </p>
+
+                        <p class="stats-period">
+                            vs last month
+                        </p>
+                    </div>
+                </article>
+
+                <article class="overview-item active-users">
+                    <i data-lucide="globe-check" class="overview-icon active-users-icon"></i>
+
+                    <div class="overview-info">
+                        <h4>Active Users</h4>
+
+                        <p class="overview-stats">
+                            <span class="stats-number">842</span>
+                            <span class="stats-procent stats-grow">
+                                <i data-lucide="move-up-right" class="status-grow-icon"></i>
+                                +15,3%
+                            </span>
+                        </p>
+
+                        <p class="stats-period">
+                            vs last month
+                        </p>
+                    </div>
+                </article>
+
+                <article class="overview-item pending-reviews">
+                    <i data-lucide="users" class="overview-icon pending-reviews-icon"></i>
+
+                    <div class="overview-info">
+                        <h4>Pending Reviews</h4>
+
+                        <p class="overview-stats">
+                            <span class="stats-number">23</span>
+                            <span class="stats-procent stats-fall">
+                                <i data-lucide="move-up-down" class="status-fall-icon"></i>
+                                -4,7%
+                            </span>
+                        </p>
+
+                        <p class="stats-period">
+                            vs last month
+                        </p>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Recent activity section -->
+            <section class="recent-activity-section">
+                <header class="additional-info-header recent-activity-header">
+                    <h2>Recent Activity</h2>
+                    <button type="button" class="view-all-activity-button">View all</button>
+                </header>
+
+                <div class="recent-activity-container">
+                    <div class="activity-container">
+                        <article class="activity">
+                            <img src="./img/user-default.jpg" alt="User avatar">
+                            
+                            <div class="activity-text">
+                                <h3>Sophia Bennett</h3>
+                                <p>updated her profile</p>
+                            </div>
+
+                            <p class="activity-time">
+                                2m ago
+                            </p>
+                        </article>
+
+                        <article class="activity">
+                            <i data-lucide="user-plus" class="activity-icon"></i>
+                            
+                            <div class="activity-text">
+                                <h3>Noah Wilson</h3>
+                                <p>joined the team</p>
+                            </div>
+
+                            <p class="activity-time">
+                                1h ago
+                            </p>
+                        </article>
+
+                        <article class="activity">
+                            <i data-lucide="message-square-more" class="activity-icon"></i>
+                            
+                            <div class="activity-text">
+                                <h3>Ethan Parker</h3>
+                                <p>sent a message</p>
+                            </div>
+
+                            <p class="activity-time">
+                                3h ago
+                            </p>
+                        </article>
+
+                        <article class="activity">
+                            <i data-lucide="user-round-pen" class="activity-icon"></i>
+                            
+                            <div class="activity-text">
+                                <h3>Ava Martinez</h3>
+                                <p>status changed to Active</p>
+                            </div>
+
+                            <p class="activity-time">
+                                5h ago
+                            </p>
+                        </article>
+
+                        <article class="activity">
+                            <i data-lucide="user-round-minus" class="activity-icon"></i>
+                            
+                            <div class="activity-text">
+                                <h3>Isabella Garcia</h3>
+                                <p>went on leave</p>
+                            </div>
+
+                            <p class="activity-time">
+                                1d ago
+                            </p>
+                        </article>
+                    </div>
+
+                    <div class="activity-status activity-loading" hidden>
+                        <h3>Loading activities...</h3>
+                        <i data-lucide="loader" class="activity-status-icon activity-loading-icon"></i>
+                    </div>
+
+                    <div class="activity-status activity-error" hidden>
+                        <h3>Activities loading error</h3>
+                        <i data-lucide="circle-x" class="activity-status-icon activity-error-icon"></i>
+                    
+                        <button type="button" class="refresh-activities-btn">
+                            <i data-lucide="refresh-cw" class="refresh-activities-icon"></i>
+                            Try again
+                        </button>
+                    </div>
+
+                    <div class="activity-status activity-empty" hidden>
+                        <h3>Activities not found</h3>
+                        <i data-lucide="info" class="activity-status activity-empty-icon"></i>
+
+
+                        <button type="button" class="refresh-activities-btn">
+                            <i data-lucide="refresh-cw" class="refresh-button-icon"></i>
+                            Try again
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- User growth section -->
+            <section class="user-growth-section">
+                <header class="additional-info-header user-growth-header">
+                    <h2>User Growth</h2>
+
+                    <select class="user-growth-period">
+                        <option value="week">Last Week</option>
+                        <option value="month">Last Month</option>
+                        <option value="year">Last Year</option>
+                    </select>
+                </header>
+
+                <div class="user-growth-graph">
+                    <div class="graph-column-container">
+                        <span class="graph-column-num">20</span>
+                        <span class="graph-column"></span>
+                    </div>
+
+                    <div class="graph-column-container">
+                        <span class="graph-column-num">15</span>
+                        <span class="graph-column"></span>
+                    </div>
+
+                    <div class="graph-column-container">
+                        <span class="graph-column-num">5</span>
+                        <span class="graph-column"></span>
+                    </div>
+
+                    <div class="graph-column-container">
+                        <span class="graph-column-num">23</span>
+                        <span class="graph-column"></span>
+                    </div>
+
+                    <div class="graph-column-container">
+                        <span class="graph-column-num">37</span>
+                        <span class="graph-column"></span>
+                    </div>
+
+                    <div class="graph-column-container">
+                        <span class="graph-column-num">54</span>
+                        <span class="graph-column"></span>
+                    </div>
+
+                    <div class="graph-column-time">
+                        <span>06.07</span>
+                    </div>
+
+                    <div class="graph-column-time">
+                        <span>07.07</span>
+                    </div>
+
+                    <div class="graph-column-time">
+                        <span>08.07</span>
+                    </div>
+
+                    <div class="graph-column-time">
+                        <span>09.07</span>
+                    </div>
+
+                    <div class="graph-column-time">
+                        <span>10.07</span>
+                    </div>
+
+                    <div class="graph-column-time">
+                        <span>11.07</span>
+                    </div>
+                </div>
+
+                <div class="user-graph-result">
+                    <p class="stats-grow user-graph-stat">
+                        <i data-lucide="move-up-right" class="status-grow-icon"></i>
+                        +12,5%
+                    </p>
+                    <p class="user-graph-stat-period">vs last month</p>
+                </div>
+            </section>
+        </aside>
+        
+        <script type="module" src="https://unpkg.com/lucide@latest"></script>
+        <script type="module" src="./main.js"></script>
+    </body>
+</html>
