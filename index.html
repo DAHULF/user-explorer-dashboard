@@ -13,11 +13,18 @@
         <aside class="nav-sidebar">
             <!-- User explorer nav sidebar header -->
             <header class="nav-sidebar-header">
-                <i data-lucide="users" class="nav-icon"></i>
+                <div class="nav-icon-container">
+                    <i data-lucide="users" class="nav-icon"></i>
+                </div>
+
                 <h2>User Explorer</h2>
+
+                <button type="button" class="icon-button hide-nav-sidebar-btn">
+                    <i data-lucide="chevron-left" class="hide-nav-sidebar-icon"></i>
+                </button>
             </header>
 
-            <!-- User explorer navigation panel -->
+            <!-- User explorer navigation pannel -->
             <nav class="nav-menu">
                 <a href="" class="menu-item item-dashboard">
                     <i data-lucide="house" class="menu-item-icon"></i>
@@ -64,20 +71,27 @@
 
             <!-- Upgrate to pro offer block -->
             <section class="upgrade-section">
-                <i data-lucide="" class="upgrade-icon"></i>
+                <div class="upgrade-icon-container">
+                    <i data-lucide="crown" class="upgrade-icon"></i>
+                </div>
+                
                 <h3>Upgrade to Pro</h3>
                 <p>Unlock advanced filters, exports and more.</p>
-                <button type="button" class="upgrade-button">Upgrade Now</button>
+                <button type="button" class="button typeA-button upgrade-button">Upgrade Now</button>
             </section>
 
             <!-- Current user profile block -->
             <section class="user-profile current-user-profile">
                 <img src="./img/user-default.jpg" alt="Your avatar">
+                
                 <div class="user-profile-text current-user-text">
                     <h3>Danil Dugin</h3>
                     <p>Administrator</p>
                 </div>
-                <button class="current-user-button"><i data-lucide="chevron-down" class="current-user-button-icon"></i></button>
+                
+                <button class="icon-button current-user-button">
+                    <i data-lucide="chevron-down" class="current-user-button-icon"></i>
+                </button>
             </section>
         </aside>
 
@@ -85,12 +99,16 @@
         <main>
             <!-- Main block header -->
             <header class="main-header">
+                <button type="button" class="icon-button show-nav-sidebar-btn">
+                    <i data-lucide="text-align-justify" class="show-nav-sidebar-icon"></i>
+                </button>
+
                 <div class="main-header-text">
                     <h1>User Explorer</h1>
                     <p>Browse, search, and filter users to find the right people.</p>
                 </div>
 
-                <button class="add-user-button">
+                <button class="button typeA-button add-user-button">
                     <i data-lucide="user-plus" class="add-user-icon"></i>
                     <span>Add New User</span>
                 </button>
@@ -98,15 +116,20 @@
 
             <!-- Filtering status block -->
             <div class="filtering-status-block">
-                <i data-lucide="check" class="filtering-success-icon"></i>
-                <i data-lucide="x" class="filtering-success-icon" hidden></i>
-
                 <div class="filtering-status-text">
                     <h3>Filters applied</h3>
                     <p>Showing 24 of 1,248 users</p>
                 </div>
 
-                <button type="button" class="filtering-status-close">
+                <div class="filtering-status-icon-container filtering-success-icon-container">
+                    <i data-lucide="check" class="filtering-success-icon"></i>
+                </div>
+
+                <!--<div class="filtering-status-icon-container filtering-failure-icon-container">
+                    <i data-lucide="x" class="filtering-failure-icon"></i>
+                </div>-->
+
+                <button type="button" class="icon-button filtering-status-close">
                     <i data-lucide="x" class="filtering-success-icon"></i>
                 </button>
             </div>
@@ -115,8 +138,13 @@
             <form class="filtering-form">
                 <div class="filtering-params">
                     <div class="filter-item">
-                        <label for="search-field" class="filter-label">Search users</label>
-                        <input type="search" id="search-field" name="searchWord" placeholder="Search by name, email, or role...">
+                        <span class="filter-label">Search users</span>
+
+                        <label class="search-field">
+                            <i data-lucide="search" class="search-icon"></i>
+
+                            <input type="search" id="search-field" name="searchWord" placeholder="Search by name, email, or role...">
+                        </label>
                     </div>
 
                     <div class="filter-item">
@@ -147,6 +175,7 @@
 
                     <div class="filter-item">
                         <span class="filter-label">Active Users Only</span>
+                        
                         <label class="active-only-switch">
                             <input type="checkbox" id="active-only-checkbox" name="activeOnly">
 
@@ -159,21 +188,21 @@
 
                 <div class="filtering-manage">
                     <div class="manage-buttons">
-                        <button type="button" class="apply-filters-btn">
+                        <button type="button" class="button typeA-button apply-filters-btn">
                             <i data-lucide="funnel" class="apply-filters-icon"></i>
                             <span>Apply filters</span>
                         </button>
 
-                        <button type="button" class="reset-filters-btn">
+                        <button type="button" class="button typeB-button reset-filters-btn">
                             <i data-lucide="refresh-ccw" class="reset-filters-icon"></i>
                             <span>Reset</span>
                         </button>
                     </div>
 
-                    <div class="advanced-filters-block">
+                    <button type="button" class="advanced-filters-block">
                         <span>Advanced filters</span>
                         <i data-lucide="settings-2" class="advanced-filters-icon"></i>
-                    </div>
+                    </button>
                 </div>
             </form>
 
@@ -181,9 +210,15 @@
             <section class="cards-section">
                 <div class="cards-container">
                     <article class="user-card">
+                        <div class="card-additional-block">
+                            <button class="icon-button more-user-card">
+                                <i data-lucide="ellipsis-vertical" class="more-user-card-icon"></i>
+                            </button>
+                        </div>
+
                         <div class="user-profile card-user-profile">
                             <img src="./img/user-default.jpg" alt="Ethan Parker avatar">
-                            <div class="user-profile-text current-user-text">
+                            <div class="user-profile-text card-user-text">
                                 <h3>Ethan Parker</h3>
                                 <p>ethan.parker@example.com</p>
                                 <p>Product Designer</p>
@@ -200,27 +235,32 @@
                         </p>
 
                         <div class="cards-button-section">
-                            <button class="view-user-button">
+                            <button class="button typeB-button view-user-button">
                                 <i data-lucide="eye" class="view-user-icon"></i>
                                 <span>View</span>
                             </button>
 
-                            <button class="message-user-button">
+                            <button class="button typeB-button message-user-button">
                                 <i data-lucide="message-square-more" class="message-user-icon"></i>
                                 <span>Message</span>
                             </button>
-
-                            <div class="card-additional-block">
-                                <button class="more-user-card"><i data-lucide="ellipsis-vertical" class="more-user-card-icon"></i></button>
-                                <i data-lucide="star" class="premium-card-icon" hidden></i>
-                            </div>
                         </div>
                     </article>
 
                     <article class="user-card card-premium">
+                        <div class="card-additional-block">
+                            <div class="premium-card-icon-container">
+                                <i data-lucide="star" class="premium-card-icon" hidden></i>
+                            </div>
+                            
+                            <button class="icon-button more-user-card">
+                                <i data-lucide="ellipsis-vertical" class="more-user-card-icon"></i>
+                            </button>
+                        </div>
+                        
                         <div class="user-profile card-user-profile">
                             <img src="./img/user-default.jpg" alt="Ethan Parker avatar">
-                            <div class="user-profile-text current-user-text">
+                            <div class="user-profile-text card-user-text">
                                 <h3>Ethan Parker</h3>
                                 <p>ethan.parker@example.com</p>
                                 <p>Product Designer</p>
@@ -237,48 +277,46 @@
                         </p>
 
                         <div class="cards-button-section">
-                            <button class="view-user-button">
+                            <button class="button typeB-button view-user-button">
                                 <i data-lucide="eye" class="view-user-icon"></i>
                                 <span>View</span>
                             </button>
 
-                            <button class="message-user-button">
+                            <button class="button typeB-button message-user-button">
                                 <i data-lucide="message-square-more" class="message-user-icon"></i>
                                 <span>Message</span>
                             </button>
-
-                            <div class="card-additional-block">
-                                <button class="more-user-card"><i data-lucide="ellipsis-vertical" class="more-user-card-icon"></i></button>
-                                <i data-lucide="star" class="premium-card-icon" hidden></i>
-                            </div>
                         </div>
                     </article>
                 </div>
 
-                <div class="cards-status cards-loading" hidden>
+                <div class="cards-status cards-loading">
                     <h3>Loading users...</h3>
-                    <i data-lucide="loader-circle" class="status-icon cards-loading-icon"></i>
+
+                    <div class="status-icon-container status-loading-icon-container">
+                        <i data-lucide="loader-circle" class="status-icon cards-loading-icon"></i>
+                    </div>
                 </div>
 
-                <div class="cards-status cards-error" hidden>
+                <div class="cards-status cards-error">
                     <h3>Users loading error</h3>
-                    <i data-lucide="circle-x" class="status-icon cards-error-icon"></i>
-                
-                    <button type="button" class="refresh-cards-btn">
+
+                    <div class="status-icon-container status-error-icon-container">
+                        <i data-lucide="circle-x" class="status-icon cards-error-icon"></i>
+                    </div>
+
+                    <button type="button" class="button typeB-button refresh-cards-btn">
                         <i data-lucide="refresh-cw" class="refresh-cards-icon"></i>
-                        Try again
+                        <span>Try again</span>
                     </button>
                 </div>
 
-                <div class="cards-status cards-empty" hidden>
+                <div class="cards-status cards-empty">
                     <h3>Users not found</h3>
-                    <i data-lucide="user-round-x" class="status-icon cards-empty-icon"></i>
-                
-                    <button type="button" class="refresh-cards-btn">
-                        <i data-lucide="refresh-cw" class="refresh-cards-icon"></i>
-                        Try again
-                    </button>
-                </div>
+
+                    <div class="status-icon-container status-empty-icon-container">
+                        <i data-lucide="user-round-x" class="status-icon cards-empty-icon"></i>
+                    </div>
             </section>
 
             <!-- Display cards manager -->
@@ -288,36 +326,40 @@
                 </p>
 
                 <div class="display-page-chooser">
-                    <button type="button" class="previous-page-button">
+                    <button type="button" class="button display-manage-button previous-page-button">
                         <i data-lucide="chevron-left" class="previous-page-icon"></i>
                     </button>
 
-                    <button type="button" class="previous-page-button">
+                    <button type="button" class="button display-manage-button number-page-button current-page-button">
                         1
                     </button>
 
-                    <p class="left-pages-space" hidden>
+                    <p class="pages-space left-pages-space">
                         ...
                     </p>
 
-                    <button type="button" class="previous-page-button">
+                    <button type="button" class="button display-manage-button number-page-button">
                         2
                     </button>
 
-                    <button type="button" class="previous-page-button">
+                    <button type="button" class="button display-manage-button number-page-button">
                         3
                     </button>
 
-                    <button type="button" class="previous-page-button">
+                    <button type="button" class="button display-manage-button number-page-button">
                         4
                     </button>
 
-                    <p class="right-pages-space" hidden>
+                    <p class="pages-space right-pages-space">
                         ...
                     </p>
 
-                    <button type="button" class="previous-page-button">
-                        <i data-lucide="chevron-right" class="previous-page-icon"></i>
+                    <button type="button" class="button display-manage-button number-page-button">
+                        5
+                    </button>
+
+                    <button type="button" class="button display-manage-button next-page-button">
+                        <i data-lucide="chevron-right" class="next-page-icon"></i>
                     </button>
                 </div>
 
@@ -390,7 +432,7 @@
                         <p class="overview-stats">
                             <span class="stats-number">23</span>
                             <span class="stats-procent stats-fall">
-                                <i data-lucide="move-up-down" class="status-fall-icon"></i>
+                                <i data-lucide="move-down-right" class="status-fall-icon"></i>
                                 -4,7%
                             </span>
                         </p>
@@ -411,7 +453,7 @@
 
                 <div class="recent-activity-container">
                     <div class="activity-container">
-                        <article class="activity">
+                        <article class="user-profile activity">
                             <img src="./img/user-default.jpg" alt="User avatar">
                             
                             <div class="activity-text">
