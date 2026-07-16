@@ -37,11 +37,17 @@
     --color-status-purple: rgb(73, 38, 150);
     --color-status-purple-background: rgba(120, 75, 242, 0.15);
 
+    --color-status-blue: rgb(38, 88, 150);
+    --color-status-blue-background: rgba(75, 150, 242, 0.15);
+
     --color-status-yellow: rgb(199, 133, 0);
     --color-status-yellow-background: rgba(242, 214, 75, 0.15);
 
     --color-status-red: rgb(207, 37, 37);
     --color-status-red-background: rgba(242, 75, 95, 0.15);
+
+    --color-status-gray: rgb(74, 74, 74);
+    --color-status-gray-background: rgba(184, 184, 184, 0.15);
 
     --color-error-status: rgb(252, 81, 81);
 
@@ -56,6 +62,25 @@
 /* =================== */
 * {
     box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #9ca3af transparent;
+    scrollbar-gutter: stable;
+}
+
+*::-webkit-scrollbar {
+    width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #9ca3af;
+    border-radius: 999px;
+
+    border: 2px solid transparent;
+    background-clip: padding-box;
 }
 
 body {
@@ -396,6 +421,9 @@ main {
     flex-direction: column;
     align-items: center;
     gap: 0.4rem;
+
+    margin: 0 auto 1rem auto;
+    max-width: 250px;
 }
 
 .upgrade-section h3 {
@@ -413,6 +441,9 @@ main {
     max-height: 8vh;
 
     flex-wrap: nowrap;
+
+    border-top: 1px solid var(--color-border-section);
+    padding-top: 1rem;
 }
 
 .current-user-button {
@@ -484,7 +515,7 @@ main {
 .filtering-params {
     display: flex;
     flex-direction: column;
-    gap: 0.8rem;
+    gap: clamp(0.8rem, 1vw, 1.5rem);
 }
 
 .filter-item {
@@ -640,6 +671,11 @@ main {
     box-shadow: var(--shadow-user-card-hovered);
 }
 
+.card-user-profile {
+    flex-wrap: nowrap;
+    flex-direction: column;
+}
+
 .card-user-profile img {
     max-width: 5rem;
     max-height: 5rem;
@@ -667,9 +703,49 @@ main {
     background-color: var(--color-status-green-background);
 }
 
+.status-pending {
+    color: var(--color-status-yellow);
+    background-color: var(--color-status-yellow-background);
+}
+
+.status-inactive {
+    color: var(--color-status-gray);
+    background-color: var(--color-status-gray-background);
+}
+
+.status-blocked {
+    color: var(--color-status-red);
+    background-color: var(--color-status-red-background);
+}
+
 .status-verified {
     color: var(--color-status-purple);
     background-color: var(--color-status-purple-background);
+}
+
+.status-team-lead {
+    color: var(--color-status-purple);
+    background-color: var(--color-status-purple-background);
+}
+
+.status-remote {
+    color: var(--color-status-blue);
+    background-color: var(--color-status-blue-background);
+}
+
+.status-contractor {
+    color: var(--color-status-yellow);
+    background-color: var(--color-status-yellow-background);
+}
+
+.status-review {
+    color: var(--color-status-blue);
+    background-color: var(--color-status-blue-background);
+}
+
+.status-on-leave {
+    color: var(--color-status-red);
+    background-color: var(--color-status-red-background);
 }
 
 .user-info {
@@ -991,6 +1067,10 @@ main {
         margin-left: auto;
         margin-right: auto;
     }
+
+    .card-user-profile {
+        flex-direction: row;
+    }
 }
 
 @media (min-width: 1100px) {
@@ -1012,7 +1092,7 @@ main {
 @media (min-width: 1240px) {
     .general-container {
         display: grid;
-        grid-template-columns: 2fr 5fr 2fr;
+        grid-template-columns: 4fr 11fr 5fr;
     }
 
     /* Additional info sidebar settings */
