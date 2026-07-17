@@ -11,7 +11,7 @@
     <body>
         <div class="general-container">
 
-            <!-- Sidebar with navigation pannel -->
+            <!-- Sidebar with navigation panel -->
             <aside class="nav-sidebar">
                 <!-- User explorer nav sidebar header -->
                 <header class="nav-sidebar-header">
@@ -21,57 +21,57 @@
 
                     <h2>User Explorer</h2>
 
-                    <button type="button" class="icon-button hide-nav-sidebar-btn">
+                    <button type="button" class="icon-button hide-nav-sidebar-btn" aria-label="Hide navigation sidebar">
                         <i data-lucide="chevron-left" class="hide-nav-sidebar-icon"></i>
                     </button>
                 </header>
 
-                <!-- User explorer navigation pannel -->
+                <!-- User explorer navigation panel -->
                 <nav class="nav-menu">
-                    <a href="" class="menu-item item-dashboard">
+                    <a href="#" class="menu-item item-dashboard">
                         <i data-lucide="house" class="menu-item-icon"></i>
                         <span class="item-text">Dashboard</span>
                         <span class="item-notif-count" hidden></span>
                     </a>
 
-                    <a href="" class="menu-item item-users item-selected">
+                    <a href="#" class="menu-item item-users item-selected" aria-current="page">
                         <i data-lucide="user" class="menu-item-icon"></i>
                         <span class="item-text">Users</span>
                         <span class="item-notif-count" hidden></span>
                     </a>
                     
-                    <a href="" class="menu-item item-segments">
+                    <a href="#" class="menu-item item-segments">
                         <i data-lucide="chart-pie" class="menu-item-icon"></i>
                         <span class="item-text">Segments</span>
                         <span class="item-notif-count" hidden></span>
                     </a>
 
-                    <a href="" class="menu-item item-reports">
+                    <a href="#" class="menu-item item-reports">
                         <i data-lucide="chart-no-axes-column" class="menu-item-icon"></i>
                         <span class="item-text">Reports</span>
                         <span class="item-notif-count" hidden></span>
                     </a>
 
-                    <a href="" class="menu-item item-messages">
+                    <a href="#" class="menu-item item-messages">
                         <i data-lucide="message-circle-more" class="menu-item-icon"></i>
                         <span class="item-text">Messages</span>
                         <span class="item-notif-count">12</span>
                     </a>
 
-                    <a href="" class="menu-item item-audit-log">
+                    <a href="#" class="menu-item item-audit-log">
                         <i data-lucide="notepad-text" class="menu-item-icon"></i>
                         <span class="item-text">Audit Log</span>
                         <span class="item-notif-count" hidden></span>
                     </a>
 
-                    <a href="" class="menu-item item-settings">
+                    <a href="#" class="menu-item item-settings">
                         <i data-lucide="settings" class="menu-item-icon"></i>
                         <span class="item-text">Settings</span>
                         <span class="item-notif-count" hidden></span>
                     </a>
                 </nav>
 
-                <!-- Upgrate to pro offer block -->
+                <!-- Upgrade to pro offer block -->
                 <section class="upgrade-section">
                     <div class="upgrade-icon-container">
                         <i data-lucide="crown" class="upgrade-icon"></i>
@@ -91,7 +91,7 @@
                         <p>Administrator</p>
                     </div>
                     
-                    <button class="icon-button current-user-button">
+                    <button type="button" class="icon-button current-user-button" aria-label="Show current user menu">
                         <i data-lucide="chevron-down" class="current-user-button-icon"></i>
                     </button>
                 </section>
@@ -101,7 +101,7 @@
             <main>
                 <!-- Main block header -->
                 <header class="main-header">
-                    <button type="button" class="icon-button show-nav-sidebar-btn">
+                    <button type="button" class="icon-button show-nav-sidebar-btn" aria-label="Show navigation sidebar">
                         <i data-lucide="text-align-justify" class="show-nav-sidebar-icon"></i>
                     </button>
 
@@ -110,7 +110,7 @@
                         <p>Browse, search, and filter users to find the right people.</p>
                     </div>
 
-                    <button class="button typeA-button add-user-button">
+                    <button type="button" class="button typeA-button add-user-button">
                         <i data-lucide="user-plus" class="add-user-icon"></i>
                         <span>Add New User</span>
                     </button>
@@ -130,10 +130,6 @@
                     <div class="filtering-status-icon-container filtering-failure-icon-container" hidden>
                         <i data-lucide="x" class="filtering-failure-icon"></i>
                     </div>
-
-                    <!--<button type="button" class="icon-button filtering-status-close">
-                        <i data-lucide="x" class="filtering-success-icon"></i>
-                    </button>-->
                 </div>
 
                 <!-- Filtering form -->
@@ -175,7 +171,7 @@
                         </div>
 
                         <div class="filter-item">
-                            <span class="filter-label">Active Users Only</span>
+                            <label for="active-only-checkbox" class="filter-label">Active Users Only</label>
                             
                             <label class="active-only-switch">
                                 <input type="checkbox" id="active-only-checkbox" name="activeOnly">
@@ -198,7 +194,7 @@
                             <span>Reset</span>
                         </button>
 
-                        <button type="button" class="icon-button advanced-filters-button">
+                        <button type="button" class="icon-button advanced-filters-button" aria-label="Show advanced filters">
                             <span>Advanced filters</span>
                             <i data-lucide="settings-2" class="advanced-filters-icon"></i>
                         </button>
@@ -218,7 +214,7 @@
                     </div>
 
                     <div class="cards-status cards-error" hidden>
-                        <h3>Users loading error</h3>
+                        <h3>Failed to load users</h3>
 
                         <div class="status-icon-container status-error-icon-container">
                             <i data-lucide="x" class="status-icon cards-error-icon"></i>
@@ -231,7 +227,7 @@
                     </div>
 
                     <div class="cards-status cards-empty" hidden>
-                        <h3>Users not found</h3>
+                        <h3>No users found</h3>
 
                         <div class="status-icon-container status-empty-icon-container">
                             <i data-lucide="user-round-x" class="status-icon cards-empty-icon"></i>
@@ -246,7 +242,7 @@
                     </p>
 
                     <div class="display-page-chooser" hidden>
-                        <button type="button" class="button display-manage-button previous-page-button">
+                        <button type="button" class="button display-manage-button previous-page-button" aria-label="Previous page">
                             <i data-lucide="chevron-left" class="previous-page-icon"></i>
                         </button>
 
@@ -278,7 +274,7 @@
                             5
                         </button>
 
-                        <button type="button" class="button display-manage-button next-page-button">
+                        <button type="button" class="button display-manage-button next-page-button" aria-label="Next page">
                             <i data-lucide="chevron-right" class="next-page-icon"></i>
                         </button>
                     </div>
@@ -313,9 +309,9 @@
 
                             <p class="overview-stats">
                                 <span class="stats-number">1,248</span>
-                                <span class="stats-procent stats-grow">
+                                <span class="stats-percent stats-grow">
                                     <i data-lucide="move-up-right" class="status-grow-icon"></i>
-                                    +12,5%
+                                    +12.5%
                                 </span>
                             </p>
 
@@ -335,9 +331,9 @@
 
                             <p class="overview-stats">
                                 <span class="stats-number">842</span>
-                                <span class="stats-procent stats-grow">
+                                <span class="stats-percent stats-grow">
                                     <i data-lucide="move-up-right" class="status-grow-icon"></i>
-                                    +15,3%
+                                    +15.3%
                                 </span>
                             </p>
 
@@ -357,9 +353,9 @@
 
                             <p class="overview-stats">
                                 <span class="stats-number">23</span>
-                                <span class="stats-procent stats-fall">
+                                <span class="stats-percent stats-fall">
                                     <i data-lucide="move-down-right" class="status-fall-icon"></i>
-                                    -4,7%
+                                    -4.7%
                                 </span>
                             </p>
 
@@ -389,7 +385,7 @@
                         </div>
 
                         <div class="activity-status activity-error">
-                            <h3>Activities loading error</h3>
+                            <h3>Failed to load activities</h3>
 
                             <div class="activity-status-icon-container activity-error-icon-container">
                                 <i data-lucide="x" class="activity-status-icon activity-error-icon"></i>
@@ -402,7 +398,7 @@
                         </div>
 
                         <div class="activity-status activity-empty">
-                            <h3>Activities not found</h3>
+                            <h3>No activities found</h3>
 
                             <div class="activity-status-icon-container activity-empty-icon-container">
                                 <i data-lucide="info" class="activity-status-icon activity-empty-icon"></i>
@@ -482,7 +478,7 @@
                     <div class="user-graph-result">
                         <p class="stats-grow user-graph-stat">
                             <i data-lucide="move-up-right" class="status-grow-icon"></i>
-                            +12,5%
+                            +12.5%
                         </p>
                         <p class="user-graph-stat-period">vs last month</p>
                     </div>

@@ -38,7 +38,9 @@ function createUserCard(user) {
     }
 
     const moreUserCardButton = document.createElement("button");
+    moreUserCardButton.type = "button";
     moreUserCardButton.classList.add("icon-button", "more-user-card");
+    moreUserCardButton.setAttribute("aria-label", "Show user menu");
 
     const moreUserCardIcon = document.createElement("i");
     moreUserCardIcon.dataset.lucide = "ellipsis-vertical";
@@ -90,7 +92,7 @@ function createUserCard(user) {
     // User info
     const userInfo = document.createElement("p");
     userInfo.classList.add("user-info");
-    userInfo.textContent = `Some information about ${user.name ?? "Unknown"}`;
+    userInfo.textContent = `Based in ${user.city ?? "an unknown location"}.`;
     card.append(userInfo);
 
     // Cards buttons
@@ -98,6 +100,7 @@ function createUserCard(user) {
     cardsButtonSection.classList.add("cards-button-section");
 
     const viewCardButton = document.createElement("button");
+    viewCardButton.type = "button";
     viewCardButton.classList.add("button", "typeB-button", "view-user-button");
 
     const viewCardIcon = document.createElement("i");
@@ -111,6 +114,7 @@ function createUserCard(user) {
     viewCardButton.append(viewCardText);
 
     const messageCardButton = document.createElement("button");
+    messageCardButton.type = "button";
     messageCardButton.classList.add("button", "typeB-button", "message-user-button");
 
     const messageCardIcon = document.createElement("i");

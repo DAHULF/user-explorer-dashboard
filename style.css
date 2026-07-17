@@ -219,7 +219,7 @@ textarea {
     margin: 0;
 }
 
-/* Basic fonst settings */
+/* Basic font settings */
 /* ==================== */
 h1, h2, h3, p {
     margin: 0;
@@ -296,7 +296,7 @@ main {
     display: none;
 }
 
-/* Sidebar with navigation pannel settings */
+/* Navigation sidebar settings */
 /* ======================================= */
 
 /* Navigation sidebar header */
@@ -333,7 +333,7 @@ main {
     color: var(--color-primary);
 }
 
-/* Navigation pannel */
+/* Navigation panel */
 .nav-menu {
     padding: 0.2rem;
 
@@ -896,7 +896,7 @@ main {
     margin: 0;
 }
 
-/* Sidebar with additional informaton */
+/* Sidebar with additional information */
 /* ================================== */
 
 #cards-per-page-select {
@@ -1175,12 +1175,12 @@ main {
         font-weight: 600;
     }
 
-    .stats-procent {
+    .stats-percent {
         margin-left: auto;
         font-weight: 500;
     }
 
-    .stats-procent svg {
+    .stats-percent svg {
         max-width: 1em;
         max-height: 1rem;
     }

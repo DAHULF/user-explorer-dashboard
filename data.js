@@ -40,7 +40,7 @@ async function fetchUsers() {
     const response = await fetch(USERS_API_URL);
 
     if(!response.ok) {
-        throw new Error(`Users loading error: ${response.status}`);
+        throw new Error(`Failed to load users: ${response.status}`);
     }
 
     users = await response.json();
@@ -54,8 +54,9 @@ function normalizeUsers(users) {
                 name: user.name,
                 email: user.email,
                 company: user.company?.name ?? "No company",
-                status: usersStatuses[Math.round(Math.random() * (usersStatuses.length - 1))],
-                role: usersRoles[Math.round(Math.random() * (usersRoles.length - 1))],
+                city: user.address?.city ?? "Unknown location",
+                status: usersStatuses[Math.floor(Math.random() * usersStatuses.length)],
+                role: usersRoles[Math.floor(Math.random() * usersRoles.length)],
                 isPremium: (Math.random() < 0.25)
             }
         });
@@ -64,7 +65,7 @@ function normalizeUsers(users) {
 export async function loadUsers() {
     try{
         usersLoadState = states.LOADING;
-        delay(2000);
+        await delay(2000);
         await fetchUsers();
         users = normalizeUsers(users);
 
@@ -77,7 +78,7 @@ export async function loadUsers() {
         return users;
     } catch (error) {
         usersLoadState = states.ERROR;
-        throw new Error("Users loading error");
+        throw new Error("Failed to load users");
     }
 }
 
@@ -92,10 +93,10 @@ export function getUsersLoadState() {
 export async function loadActivities() {
     try {
         activitiesLoadState = states.LOADING;
-        delay(2000);
+        await delay(2000);
 
-        if(Math.random() > 0.25) {
-            throw new Error("Activities loading error");
+        if(Math.random() <= 0.25) {
+            throw new Error("Failed to load activities");
         }
 
         activities = [

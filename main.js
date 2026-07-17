@@ -9,15 +9,24 @@ import { renderUsersCards, renderUsersLoading, renderUsersLoadingError,
 
 lucide.createIcons();
 
-// Nav sidevar manage
+// Navigation sidebar management
 // ==================
 
 const navSidebar = document.querySelector(".nav-sidebar");
 const showNavSidebarBtn = document.querySelector(".show-nav-sidebar-btn");
 const hideNavSidebarBtn = document.querySelector(".hide-nav-sidebar-btn");
 
+navSidebar.addEventListener("click", (event) => {
+    const link = event.target.closest(".menu-item");
+
+    if(!link) {
+        return;
+    }
+
+    event.preventDefault();
+});
+
 showNavSidebarBtn.addEventListener("click", () => {
-    console.log("show");
     navSidebar.classList.toggle('nav-sidebar-displayed', true);
 });
 
@@ -76,7 +85,7 @@ function filterUsers() {
         const matchesSearch = searchText.includes(filterState.searchWord.toLowerCase());
 
         // Accept status matches
-        const matchesStatus = (filterState.displayStatus == "all") || (user.status.toLowerCase() === filterState.displayStatus);
+        const matchesStatus = (filterState.displayStatus === "all") || (user.status.toLowerCase() === filterState.displayStatus);
 
         // Accept active only checkbox option
         const matchesOnlyActiveCheckbox = !filterState.activeOnly || user.status === "Active";
@@ -89,20 +98,20 @@ function filterUsers() {
 }
 
 const appliedStatusIcon = document.querySelector(".filtering-success-icon-container");
-const resetedStatusIcon = document.querySelector(".filtering-failure-icon-container");
+const resetStatusIcon = document.querySelector(".filtering-failure-icon-container");
 const filteringStatusHeader = document.querySelector(".filtering-status-text h3");
 const filteringStatusText = document.querySelector(".filtering-status-text p");
 
 function updateFilteringStatusBlock() {
-    const isReseted = searchField.value === ""
+    const areFiltersReset = searchField.value === ""
                     && selectStatus.value === "all"
                     && activeOnlyCheckbox.checked === false;
  
-    appliedStatusIcon.hidden = isReseted;
-    resetedStatusIcon.hidden = !isReseted;
+    appliedStatusIcon.hidden = areFiltersReset;
+    resetStatusIcon.hidden = !areFiltersReset;
 
-    filteringStatusHeader.textContent = `Filters ${isReseted ? "reseted" : "applied"}`;
-    filteringStatusText.textContent = isReseted ? `Showing all ${filteredUsers.length} users`
+    filteringStatusHeader.textContent = areFiltersReset ? "Filters reset" : "Filters applied";
+    filteringStatusText.textContent = areFiltersReset ? `Showing all ${filteredUsers.length} users`
                             : `Showing ${filteredUsers.length} of ${getUsers().length} users`;
 }
 
@@ -207,8 +216,7 @@ function switchPage(newPage) {
 
     leftPagesSpace.hidden = (pagesCount < 6 || newPage < 4);
     rightPagesSpace.hidden = (pagesCount < 6 || newPage >= pagesCount - 2);
-
-    const currentPage = getCurrentPage();
+    
     pageButtons.forEach((button) => button.classList.remove("current-page-button"));
 
     if(!leftPagesSpace.hidden && !rightPagesSpace.hidden) {
@@ -308,6 +316,8 @@ cardsContainer.addEventListener("click", (event) => {
 function updateUsersCards() {
     if(getUsersLoadState() === states.ERROR) {
         renderUsersLoadingError();
+        updateDisplayStatus();
+        return;
     }
 
     const count = getCardsPerPage();
@@ -332,7 +342,7 @@ async function initUsers() {
         updatePagesButtons();
         updateUsersCards();
     } catch(error) {
-        console.log(error.message);
+        console.error(error);
         renderUsersLoadingError();
     }
 }
@@ -359,7 +369,7 @@ async function initActivities() {
             renderActivitiesCards(activities);
         }
     } catch (error) {
-        console.log(error.message);
+        console.error(error);
         renderActivitiesLoadingError();
     }
 }
