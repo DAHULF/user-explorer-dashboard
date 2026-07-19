@@ -58,3 +58,15 @@ To run the project locally:
 ## Live Demo
 
 [View the live project](https://dahulf.github.io/user-explorer-dashboard/)
+
+### Desktop
+
+![Desktop version of User Explorer Dashboard](./screenshots/desktop.png)
+
+### Tablet
+
+![Tablet version of User Explorer Dashboard](./screenshots/tablet.png)
+
+### Mobile
+
+![Mobile version of User Explorer Dashboard](./screenshots/mobile.png)
