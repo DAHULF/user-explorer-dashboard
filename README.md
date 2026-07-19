@@ -57,4 +57,4 @@ To run the project locally:
 
 ## Live Demo
 
-The live demo will be added later.
+[View the live project](https://dahulf.github.io/user-explorer-dashboard/)
